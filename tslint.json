@@ -34,7 +34,7 @@
 		"max-line-length": [true, 120],
 		"no-trailing-whitespace": false,
 		"quotemark": [true, "single"],
-		"semicolon": [true, "always"],
+		"semicolon": [false, "always"],
 		"trailing-comma": false,
 		"linterOptions": {
 			"exclude": ["./src/**/*.d.ts"]

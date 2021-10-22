@@ -1,5 +1,6 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post } from '@nestjs/common';
 import { ProductModel } from './product.model';
+import { FindProductDto } from './dto/find-product.dto';
 
 //продукт - это то что показываем в топ рейтинге
 @Controller('product')
@@ -28,4 +29,12 @@ export class ProductController {
   async patch(@Param('id') id: string, @Body() dto: ProductModel) {
 
   }
+
+  //код ответа по дефолту 201 у пост, но мы ничего не обновили поэтому 200
+  @HttpCode(200)
+  @Post()
+  async find(@Body() dto: FindProductDto) {
+
+  }
+
 }

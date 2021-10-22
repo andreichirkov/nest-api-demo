@@ -6,6 +6,7 @@ export enum TopLevelCategory {
 }
 
 export class TopPageModel {
+  _id: string
   //первый уровень категории (курсы, сервисы, книги, товары)
   firstCategory: TopLevelCategory
   //второй уровень категорий (разработка, аналитика, маркетинг)

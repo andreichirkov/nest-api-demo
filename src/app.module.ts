@@ -1,14 +1,31 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { TopPageModule } from './top-page/top-page.module';
 import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypegooseModule } from 'nestjs-typegoose';
+import { getMongoConfig } from './configs/mongo.config';
 
 @Module({
-	imports: [AuthModule, TopPageModule, ProductModule, ReviewModule],
-	controllers: [AppController],
-	providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+    //подключаемся к БД, чтобы был доступен конфиг forRootAsync
+
+    TypegooseModule.forRootAsync({
+      //чтобы использовать любой провайдер - нужно импортировать модуль которой содержит этот провайдер
+      imports: [ConfigModule],
+      //в этот фэктоори который будет работать нужно заинжектировать какую то зависимость,
+      //из модуля который импортировали
+      inject: [ConfigService],
+      useFactory: getMongoConfig
+    }),
+
+    AuthModule,
+    TopPageModule,
+    ProductModule,
+    ReviewModule
+  ],
 })
-export class AppModule { }
+
+export class AppModule {}

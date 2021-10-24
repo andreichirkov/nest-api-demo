@@ -1,6 +1,9 @@
 # compiled output
 /dist
 /node_modules
+.env
+/uploads
+/mongo-data-4.4
 
 # Logs
 logs

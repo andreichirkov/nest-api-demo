@@ -47,8 +47,6 @@ describe('AppController (e2e)', () => {
 			//вытащим из респонса сразу боди, тк then, то главная функция стала промисом
 			.then(({ body }: request.Response) => {
 				createdId = body._id
-				// tslint:disable-next-line:no-console
-				// console.log('123', body)
 				//надо проверить что ответ не undefined, поэтому будем ожидать
 				expect(createdId).toBeDefined()
 				done()
@@ -61,7 +59,7 @@ describe('AppController (e2e)', () => {
 			.expect(200)
 			.then(({ body }: request.Response) => {
 				// tslint:disable-next-line:no-console
-				console.log('456', body)
+				// console.log('456', body)
 				//создали отзыв и получили ответ массив с 1 созданным отзывом
 				expect(body.length).toBe(1)
 				done()

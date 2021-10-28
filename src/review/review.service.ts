@@ -29,7 +29,7 @@ export class ReviewService {
 
   //ищем по одному productId несколько отзывов (или 1) вернет массив документов
   async findByProductId(productId: string): Promise<DocumentType<ReviewModel>[]> {
-    console.log( 'productId в сервисе', productId);
+    // console.log( 'productId в сервисе', productId);
     return this.reviewModel.find({ productId: Types.ObjectId(productId) }).exec()
   }
 

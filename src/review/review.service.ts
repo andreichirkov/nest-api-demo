@@ -23,12 +23,14 @@ export class ReviewService {
 
   //null если такого айди нету (доп обработка будет в контроллере)
   async delete(id: string): Promise<DocumentType<ReviewModel> | null> {
+    // console.log('123121', id);
     return this.reviewModel.findByIdAndDelete(id).exec()
   }
 
   //ищем по одному productId несколько отзывов (или 1) вернет массив документов
   async findByProductId(productId: string): Promise<DocumentType<ReviewModel>[]> {
-    return this.reviewModel.find({  productId: Types.ObjectId(productId) }).exec()
+    console.log( 'productId в сервисе', productId);
+    return this.reviewModel.find({ productId: Types.ObjectId(productId) }).exec()
   }
 
   //удалить все отзывы, если удален продукт
